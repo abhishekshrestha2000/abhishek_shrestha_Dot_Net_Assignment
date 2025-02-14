@@ -1,0 +1,64 @@
+﻿@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@using Microsoft.AspNetCore.Identity
+
+
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Student Enrollment Portal</h1>
+    <p>Your one-stop platform for managing student enrollments and courses effectively.</p>
+
+    <div class="mt-4">
+        <button class="btn btn-primary btn-lg mx-2" onclick="location.href='@Url.Action("Index", "Courses")'">View Courses</button>
+
+
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <button class="btn btn-success btn-lg mx-2" onclick="location.href='@Url.Action("Create", "Enrolls")'">Enrollment</button>
+        }
+    </div>
+   
+</div>
+
+<style>
+    .btn {
+        padding: 10px 20px;
+        font-size: 1.2rem;
+        border-radius: 10px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    h1 {
+        font-size: 3rem;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 1.1rem;
+        color: #555;
+    }
+
+    a {
+        color: #007bff;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    .text-center {
+        padding: 50px 20px;
+    }
+</style>

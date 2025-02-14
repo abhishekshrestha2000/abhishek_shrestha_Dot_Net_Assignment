@@ -1,0 +1,68 @@
+﻿@model Abhishek_Dot_net_Assignment.Models.Enrollment
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create Enrollment</h1>
+
+<h4>Enrollment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create">
+            <!-- Display validation summary for the form -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <!-- Student Dropdown -->
+            <div class="form-group">
+                <label asp-for="StudentId" class="control-label">Student</label>
+                <select asp-for="StudentId" class="form-control">
+                    <option value="">-- Enter or Select Student --</option>
+                    <option value="1">Student 1</option>
+                    <option value="2">Student 2</option>
+                    <option value="3">Student 3</option>
+                </select>
+                <span asp-validation-for="StudentId" class="text-danger"></span>
+            </div>
+
+            <!-- Course Dropdown -->
+            <div class="form-group">
+                <label asp-for="CourseId" class="control-label">Course</label>
+                <select asp-for="CourseId" class="form-control">
+                    <option value="">-- Select a Course --</option>
+                    <option value="101">Course 101</option>
+                    <option value="102">Course 102</option>
+                    <option value="103">Course 103</option>
+                </select>
+                <span asp-validation-for="CourseId" class="text-danger"></span>
+            </div>
+
+            <!-- Enrollment Date -->
+            <div class="form-group">
+                <label asp-for="EnrollmentDate" class="control-label">Enrollment Date</label>
+                <input asp-for="EnrollmentDate" class="form-control" />
+                <span asp-validation-for="EnrollmentDate" class="text-danger"></span>
+            </div>
+
+            <!-- Status -->
+            <div class="form-group">
+                <label asp-for="Status" class="control-label">Status</label>
+                <input asp-for="Status" class="form-control" />
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
